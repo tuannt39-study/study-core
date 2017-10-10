@@ -1,0 +1,61 @@
+- Phân biệt lớp abstract và Interface trong Java
+
+- Phân biệt lớp abstract và Interface trong Java
+
++ Cả lớp abstract và Interface được sử dụng để thu được tính trừu tượng, từ đó chúng ta có thể khai báo các phương thức trừu tượng.
+Cả lớp trừu tượng và Interface không thể được khởi tạo
+
+- Lớp trừu tượng
+
+Lớp trừu tượng có thể có các phương thức abstract và non-abstract	
+Lớp trừu tượng không hỗ trợ đa kế thừa	
+Lớp trừu tượng có thể có các biến final, non-final, static và non-static	
+Lớp trừu tượng có thể có phương thức static, phương thức main và constructor
+Từ khóa abstract được sử dụng để khai báo lớp trừu tượng	
+Lớp trừu tượng có thể cung cấp trình triển khai của Interface	
+Ví dụ: public abstract class Shape{ public abstract void draw(); }	
+
+- Interface
+
+Interface chỉ có thể có phương thức abstract
+Interface hỗ trợ đa kế thừa
+Interface chỉ có các biến static và final
+Interface không thể có phương thức static, main hoặc constructor.
+Từ khóa interface được sử dụng để khai báo Interface
+Interface không cung cấp trình triển khai cụ thể của lớp abstract
+Ví dụ: public interface Drawable{ void draw(); }
+
+- Về cơ bản, lớp trừu tượng đạt được trừu tượng hóa một phần (từ 0 tới 100%) trong khi đó Interface có thể đạt được trừu tượng hóa hoàn toàn (100%).
+
+- Ví dụ về lớp trừu tượng và Interface trong Java
+
+//Tao interface ma co 4 phuong thuc  
+interface A{  
+	void a();//theo mac dinh, public va abstract  
+	void b();  
+	void c();  
+	void d();  
+}  
+  
+//Tao lop abstract ma cung cap trinh trien khai cua mot phuong thuc cua A interface  
+abstract class B implements A{  
+	public void c(){System.out.println("Toi la C");}  
+}  
+  
+//Tao lop con cua lop abstract, bay gio chung ta can cung cap trinh trien khai cho cac phuong thuc con lai  
+class M extends B{  
+	public void a(){System.out.println("Toi la a");}  
+	public void b(){System.out.println("Toi la b");}  
+	public void d(){System.out.println("Toi la d");}  
+}  
+  
+//Tao mot lop Test ma goi cac phuong thuc cua A interface  
+class Test5{  
+	public static void main(String args[]){  
+		A a=new M();  
+		a.a();  
+		a.b();  
+		a.c();  
+		a.d();  
+	}
+}

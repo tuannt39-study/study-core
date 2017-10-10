@@ -1,0 +1,85 @@
+- Lớp TreeSet trong Java
+
+- Lớp TreeSet trong Java
+
++ Lớp TreeSet trong Java cung cấp một sự triển khai của Set Interface mà sử dụng một tree cho lưu giữ.
+Các đối tượng được lưu giữ được xếp thứ tự tăng dần.
+
++ Thời gian truy cập và thu nhận dữ liệu là khá nhanh, làm cho TreeSet như là một lựa chọn tuyệt vời khi lưu giữ một lượng lớn thông tin đã xếp thứ tự mà phải được tìm kiếm một cách nhanh chóng.
+
++ Lớp TreeSet hỗ trợ 4 constructor. Mẫu đầu tiên xây dựng một Tree Set trống mà sẽ được xếp thứ tự tăng dần theo thứ tự tự nhiên của các phần tử của nó.
+TreeSet( )
+
++ Mẫu constructor thứ hai xây dựng một Tree set mà chứa các phần tử của c.
+TreeSet(Collection c)
+
++ Mẫu constructor thứ 3 xây dựng một tree set trống mà sẽ được xếp thứ tự theo bộ so sánh được xác định bởi comp.
+TreeSet(Comparator comp)
+
++ Mẫu thứ 4 xây dựng một tree set mà chứa các phần tử của ss:
+TreeSet(SortedSet ss)
+
+- Phương thức và Miêu tả
+
++ void add(Object o)
+Thêm phần tử đã cho tới Set này nếu nó chưa có mặt
+
++ boolean addAll(Collection c)
+Thêm tất cả phần tử trong collection đã cho tới Set này
+
++ void clear()
+Gỡ bỏ tất cả phần tử từ Set này
+
++ Object clone()
+Trả về một shallow copy của đối tượng TreeSet này
+
++ Comparator comparator()
+Trả về bộ so sánh được sử dụng để xếp thứ tự Sorted set này, hoặc null nếu tree set sử dụng cách xếp thứ tự phần tử tự nhiên
+
++ boolean contains(Object o)
+Trả về true nếu Set này chứa phần tử đã cho
+
++ Object first()
+Trả về phần tử đầu tiên (thấp nhất) hiện tại trong Sorted Set này
+
++ SortedSet headSet(Object toElement)
+Trả về một phần của Set này mà có các phần tử nhỏ hơn toElement
+
++ boolean isEmpty()
+Trả về true nếu Set này không chứa phần tử nào
+
++ Iterator iterator()
+Trả về một Iterator qua các phần tử trong Set này
+
++ Object last()
+Trả về phần tử cuối cùng (cao nhất) hiện tại Sorted Set này
+
++ boolean remove(Object o)
+Gỡ bỏ phần tử đã cho từ Set này nếu nó có mặt
+
++ int size()
+Trả về số phần tử trong Set này
+
++ SortedSet subSet(Object fromElement, Object toElement)
+Trả về một phần Set này mà có các phần tử từ fromElement toElement
+
++ SortedSet tailSet(Object fromElement)
+Trả về một phần Set này mà có phần tử lớn hơn hoặc bằng fromElement
+
+- Ví dụ
+
+public class TreeSetDemo {
+
+   public static void main(String args[]) {
+      // Tao mot tree set
+      TreeSet ts = new TreeSet();
+      // them cac phan tu toi tree set
+      ts.add("C");
+      ts.add("A");
+      ts.add("B");
+      ts.add("E");
+      ts.add("F");
+      ts.add("D");
+      System.out.println(ts);
+   }
+}

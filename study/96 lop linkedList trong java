@@ -1,0 +1,125 @@
+- Lớp LinkedList trong Java
+
+- Lớp LinkedList trong Java
+
++ Lớp LinkedList trong Java kế thừa lớp AbstractSequentialList và triển khai List Interface.
+Nó cung cấp một cấu trúc dữ liệu linked-list (dạng danh sách được liên kết).
+
++ Lớp LinkedList hỗ trợ hai constructor. Constructor đầu tiên xây dựng một linked-list trống:
+LinkedList( )
+
++ Constructor sau xây dựng một linked-list mà được khởi tạo với các phần tử trong collection c:
+LinkedList(Collection c)
+
+- Phương thức và Miêu tả
+
++ void add(int index, Object element)
+Chèn element đã xác định tại index đã cho.
+Ném một IndexOutOfBoundsException nếu index đã cho là ở bên ngoài dãy (index < 0 || index > size())
+
++ boolean add(Object o)
+Phụ thêm phần tử đã cho tới cuối của List này
+
++ boolean addAll(Collection c)
+Phụ thêm tất cả phần tử trong collection đã cho tới cuối của list này, theo thứ tự mà chúng được trả về bởi Iterator của collection đã cho.
+Ném một NullPointerException nếu collection đã cho là null
+
++ boolean addAll(int index, Collection c)
+Chèn tất cả phần tử trong collection đã cho vào trong List này, bắt đầu từ vị trí đã cho. 
+Ném NullPointerException nếu collection đã cho là null
+
++ void addFirst(Object o)
+Chèn phần tử đã cho vào phần đầu của list này
+
++ void addLast(Object o)
+Phụ thêm phần tử đã cho vào phần cuối của list này
+
++ void clear()
+Gỡ bỏ tất cả phần tử từ list này
+
++ Object clone()
+Trả về một shallow copy của LinkedList này
+
++ boolean contains(Object o)
+Trả về true nếu list này chứa phần tử đã cho. Chính thức hơn, trả về true nếu và chỉ nếu list này chứa ít nhất một phần tử e để mà (o==null ? e==null : o.equals(e))
+
++ Object get(int index)
+Trả về phần tử tại vị trí đã cho. Ném IndexOutOfBoundsException nếu index ở bên ngoài dãy (index < 0 || index >= size())
+
++ Object getFirst()
+Trả về phần tử đầu tiên trong list này. Ném NoSuchElementException nếu list này là trống
+
++ Object getLast()
+Trả về phần tử cuối trong list này. Ném NoSuchElementException nếu list này là trống
+
++ int indexOf(Object o)
+Trả về index trong list này cho sự xuất hiện đầu tiên của phần tử đã cho, hoặc -1 nếu List này không chứa phần tử này
+
++ int lastIndexOf(Object o)
+Trả về index trong list này cho sự xuất hiện cuối của phần tử đã cho, hoặc -1 nếu List này không chứa phần tử này
+
++ ListIterator listIterator(int index)
+Trả về một list-iterator của phần tử trong list này (trong dãy chính xác), bắt đầu từ vị trí đã cho trong list.
+Ném IndexOutOfBoundsException nếu index đã cho ở bên ngoài dãy (index < 0 || index >= size())
+
++ Object remove(int index)
+Gỡ bỏ phần tử tại vị trí đã cho. Ném NoSuchElementException nếu list này là trống
+
++ boolean remove(Object o)
+Gỡ bỏ sự xuất hiện đầu tiên của phần tử đã cho. Ném NoSuchElementException nếu list này trống.
+Ném IndexOutOfBoundsException nếu index ở bên ngoài dãy (index < 0 || index >= size())
+
++ Object removeFirst()
+Gỡ bỏ và trả về phần tử đầu tiên từ list này. Ném NoSuchElementException nếu list là trống
+
++ Object removeLast()
+Gỡ bỏ và trả về phần tử cuối từ list này. Ném NoSuchElementException nếu list là trống
+
++ Object set(int index, Object element)
+Thay thế phần tử tại vị trí đã cho trong list này với phần tử đã cho. Ném IndexOutOfBoundsException nếu index đã cho ở ngoài dãy (index < 0 || index >= size())
+
++ int size()
+Trả về số phần tử trong list này
+
++ Object[] toArray()
+Trả về một mảng chứa tất cả phần tử trong list này trong đúng thứ tự. Ném NullPointerException nếu mảng đã xác định là null
+
++ Object[] toArray(Object[] a)
+Trả về một mảng chứa tất cả phần tử trong list này trong đúng thứ tự; kiểu runtime của mảng trả về là như của mảng đã xác định
+
+- Ví dụ
+
+public class LinkedListDemo {
+
+   public static void main(String args[]) {
+      // tao mot linked list
+      LinkedList ll = new LinkedList();
+      // them cac phan tu toi linked list
+      ll.add("F");
+      ll.add("B");
+      ll.add("D");
+      ll.add("E");
+      ll.add("C");
+      ll.addLast("Z");
+      ll.addFirst("A");
+      ll.add(1, "A2");
+      System.out.println("Noi dung ban dau cua LinkedList: " + ll);
+
+      // xoa cac phan tu tu linked list
+      ll.remove("F");
+      ll.remove(2);
+      System.out.println("Noi dung cua LinkedList sau khi xoa: "
+       + ll);
+      
+      // xoa cac phan tu dau tien va cuoi cung
+      ll.removeFirst();
+      ll.removeLast();
+      System.out.println("LinkedList sau khi xoa phan tu dau tien va cuoi cung: "
+       + ll);
+
+      // lay va thiet lap mot gia tri
+      Object val = ll.get(2);
+      ll.set(2, (String) val + " Dathaydoi");
+      System.out.println("LinkedList sau khi thay doi: " + ll);
+   }
+}

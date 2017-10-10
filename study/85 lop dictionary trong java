@@ -1,0 +1,33 @@
+- Lớp Dictionary trong Java
+
+- Lớp Dictionary trong Java
+
++ Lớp Dictionary trong Java là một lớp abstract mà biểu diễn một kho lưu giữ key/value và hoạt động khá giống lớp Map trong Java.
+
++ Với một cặp key/value đã cung cấp, bạn có thể lưu giữ giá trị trong đối tượng Dictionary. Khi giá trị được lưu, bạn có thể thu nhận nó bởi sử dụng key của nó.
+Ngoài ra, giống như lớp Map, một Dictionary có thể được xem như là một danh sách các cặp key/value.
+
+- Phương thức và Miêu tả
+
++ Enumeration elements( )
+Trả về một bảng liệt kê các giá trị được chứa trong Dictionary
+
++ Object get(Object key)
+Trả về đối tượng mà chứa giá trị liên kết với key. Nếu key không có trong Dictionary, thì đối tượng null được trả về
+
++ boolean isEmpty( )
+Trả về true nếu Dictionary là trống, và trả về false nếu nó chứa ít nhất một key
+
++ Enumeration keys( )
+Trả về một bản liệt kê các key được chứa trong Dictionary
+
++ Object put(Object key, Object value)
+Chèn một key và value của nó vào trong Dictionary. Trả về null nếu key đã không có trong Dictionary đó; trả về value trước mà liên kết với key nếu key đã ở trong Dictionary
+
++ Object remove(Object key)
+Gỡ bỏ key và value của nó. Trả về value mà liên kết với key. Nếu key không có trong Dictionary đó, thì trả về null
+
++ int size( )
+Trả về số entry trong Dictionary
+
+- Lớp Dictionary là cũ. Bạn nên triển khai Map Interface trong Java để có các tính năng lưu giữ key/value.

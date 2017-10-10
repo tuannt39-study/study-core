@@ -1,0 +1,235 @@
+- Lớp trừu tượng - Abstract Class trong Java
+
+- Lớp trừu tượng - Abstract Class trong Java
+
++ Một lớp được khai báo với từ khóa abstract được xem như là lớp abstract trong Java.
+Nó có thể có các phương thức abstract hoặc non-abtract.
+Trước khi tìm hiểu về lớp trừu tượng trong Java, bạn cần hiểu tính trừu tượng trong Java là gì.
+
+- Tính trừu tượng (Abstraction) trong Java
+
++ Tính trừu tượng là một tiến trình ẩn các chi tiết trình triển khai và chỉ hiển thị tính năng tới người dùng.
+Nói cách khác, nó chỉ hiển thị các thứ quan trọng tới người dùng và ẩn các chi tiết nội tại, ví dụ: để gửi tin nhắn, người dùng chỉ cần soạn text và gửi tin.
+Bạn không biết tiến trình xử lý nội tại về phân phối tin nhắn.
+Tính trừu tượng giúp bạn trọng tâm hơn vào đối tượng thay vì quan tâm đến cách nó thực hiện.
+
+- Lớp abstract trong Java
+
++ Một lớp được khai báo là abstract thì đó là lớp trừu tượng.
+Nó cần được kế thừa và phương thức của nó được triển khai. Nó không thể được khởi tạo.
+
++ Sử dụng từ khóa abstract để khai báo một lớp abstract.
+Từ khóa này xuất hiện trước từ khóa class trong khai báo lớp. Ví dụ:
+
+abstract class A{} 
+
++ Có hai cách để đạt được tính trừu tượng hóa trong Java:
+
+Lớp abstract (0 tới 100%)
+Interface (100%)
+
+- Phương thức trừu tượng trong Java
+
++ Một phương thức được khai báo là abstract và không có trình triển khai thì đó là phương thức trừu tượng.
+
++ Nếu bạn muốn một lớp chứa một phương thức cụ thể nhưng bạn muốn triển khai thực sự phương thức đó để được quyết định bởi các lớp con,
+thì bạn có thể khai báo phương thức đó trong lớp cha ở dạng abstract.
+
++ Từ khóa abstract được sử dụng để khai báo một phương thức dạng abstract.
+Một phương thức abstract không có thân phương thức.
+
++ Phương thức abstract sẽ không có định nghĩa, được theo sau bởi dấu chấm phảy, không có dấu ngoặc móc ôm theo sau:
+
+abstract void printStatus(); // Khai bao phuong thuc voi tu khoa abstract va khong co than phuong thuc
+
++ Ví dụ về lớp trừu tượng và phương thức trừu tượng trong Java
+
+Trong ví dụ này, Bike là lớp trừu tượng chỉ chứa một phương thức trừu tượng là run. Trình triển khai của nó được cung cấp bởi lớp Honda.
+
+// lop truu tuong Bike
+abstract class Bike{  
+	abstract void run();  // phuong thuc truu tuong voi tu khoa abstract
+}  
+
+// lop Honda4 ke thua lop truu tuong Bike 
+class Honda4 extends Bike{  
+	void run(){
+		System.out.println("Dang chay mot cach an toan..");
+	}  
+
+	// phuong thuc main()  
+	public static void main(String args[]){  
+		Bike obj = new Honda4();  
+		obj.run();  
+	}  
+}  
+
+- Kế thừa lớp Abstract trong Java
+
++ Trong ví dụ này, Shape là lớp trừu tượng, trình triển khai của nó được cung cấp bởi lớp Rectangle và lớp Circle.
+Hai lớp này kế thừa lớp trừu tượng Shape.
+
+File: TestAbstraction1.java
+
+// lop truu tuong Shape
+abstract class Shape{  
+	abstract void draw();  
+}  
+
+//Trong tinh huong nay, trinh trien khai duoc cung cap boi ai do, vi du: nguoi su dung cuoi cung nao do  
+	class Rectangle extends Shape{  
+		void draw(){
+		System.out.println("Ve hinh chu nhat");
+	}  
+}  
+
+class Circle1 extends Shape{  
+	void draw(){
+		System.out.println("Ve hinh tron");
+	}  
+}  
+
+//Trong tinh huong nay, phuong thuc duoc goi boi lap trinh vien hoac nguoi dung  
+class TestAbstraction1{  
+	public static void main(String args[]){  
+		Shape s=new Circle1();   //Trong tinh huong nay, doi tuong duoc cung cap thong qua phuong thuc, chang han nhu getShape()  
+		s.draw();  
+	}  
+}  
+
++ Khi mình tạo sự thể hiện của lớp Rectangle (tại dòng Shape s=new Circle1();), phương thức draw() của lớp Rectangle sẽ được triệu hồi.
+
++ Có thể bạn chưa quen thuộc với cách thức viết chung tất cả các lớp trong cùng một file như trên và có thể làm cho các bạn rối mắt.
+Trong ví dụ tiếp mình sẽ trình bày riêng rẽ từng file cho các bạn dễ hiểu.
+
++ Tất nhiên, trong khi lập trình bất cứ ngôn ngữ nào, mỗi Class mà chúng ta tạo ra đều phục vụ cho một mục đích cụ thể nào đó.
+Do đó, bạn nên tạo các Class riêng rẽ trong từng file, đừng làm như trên nhé.
+
++ Ví dụ khác về Kế thừa lớp Abstract trong Java
+
+Đầu tiên mình có một lớp trừu tượng Bank có phương thức abstract có tên là getRateOfInterest() với mục đích để lấy lãi suất của ngân hàng nói chung.
+
+File: Bank.java
+
+abstract class Bank{    
+	abstract int getRateOfInterest();    
+}
+
+Tiếp đó, mình có hai lớp SBI và PNB đại diện cho tên các ngân hàng và hai lớp này kế thừa lớp trừu tượng Bank ở trên.
+Vì hai lớp này kế thừa lớp trừu tượng Bank nên cả hai lớp phải cung cấp trình triển khai cụ thể cho phương thức getRateOfInterest().
+
+File: SBI.java
+
+class SBI extends Bank{    
+	int getRateOfInterest(){
+		return 7;
+	}    // bat buoc phai cung cap trinh trien khai cua getRateOfInterest
+}    
+
+File: PNB.java
+
+class PNB extends Bank{    
+	int getRateOfInterest(){
+		return 8;
+	}    // bat buoc phai cung cap trinh trien khai cua getRateOfInterest
+} 
+
+Và cuối cùng, lớp TestBank có phương thức main() sẽ có nội dung như sau:
+
+class TestBank{    
+	public static void main(String args[]){  
+		// Tao mot doi tuong SBI moi  
+		Bank b=new SBI();  //Neu doi tuong la PNB, phuong thuc cua PNB se duoc trieu hoi  
+		int interest=b.getRateOfInterest();    //Trieu hoi phuong thuc cua SBI
+		System.out.println("Ti le lai suat la: "+interest+" %");    
+	}
+}   
+
+
+Lớp trừu tượng có thể có thành viên dữ liệu, phương thức trừu tượng, constructor, và có thể cả phương thức main().
+
+File: TestAbstraction2.java
+
+//vi du ve lop abstract ma co than phuong thuc 
+abstract class Bike{  
+   Bike(){
+   	System.out.println("bike duoc tao");
+   }  
+
+   abstract void run(); 
+
+	void changeGear(){
+		System.out.println("gear duoc thay doi");
+	}  
+}  
+  
+class Honda extends Bike{  
+	void run(){
+		System.out.println("dang chay mot cach an toan..");
+	}  
+} 
+
+class TestAbstraction2{  
+	public static void main(String args[]){  
+		Bike obj = new Honda();  
+		obj.run();  
+		obj.changeGear();  
+	}  
+}  
+
+Qui tắc: Nếu bạn đang kế thừa bất cứ lớp trừu tượng nào mà có phương thức trừu tượng, thì bạn phải hoặc cung cấp trình triển khai của các phương thức của lớp trừu tượng này.
+
+Lớp trừu tượng cũng có thể được sử dụng để cung cấp một số trình triển khai của Interface. 
+Trong tình huống này, người dùng cuối cùng không thể bị bắt buộc phải ghi đè tất cả phương thức của Interface đó.
+
+Ghi chú: Nếu bạn mới học về Java, thì học Interface trước và bỏ qua ví dụ này.
+
+// mot interface A
+
+interface A{  
+void a();  
+void b();  
+void c();  
+void d();  
+}  
+
+// lop truu tuong B ke thua interface A  
+
+abstract class B implements A{  
+//trong vi du nay, lop truu tuong B co the chi cung cap trinh trien khai phuong thuc c()
+	public void c(){
+		System.out.println("Toi la C");
+	}  
+}  
+
+// lop M ke thua lop truu tuong B  
+
+class M extends B{  
+
+// bat buoc phai trien khai cac phuong thuc a(), b(), c()
+
+public void a(){
+  System.out.println("Toi la a");
+  }  
+public void b(){
+  System.out.println("Toi la b");
+  }  
+public void d(){
+  System.out.println("Toi la d");
+  }  
+}  
+
+// lop Test5 chua phuong thuc main()  
+
+class Test5{  
+public static void main(String args[]){  
+A a=new M();  
+a.a();  
+a.b();  
+a.c();  
+a.d();  
+}} 
+
+Ps: Đi làm có thể hỏi về sự khác nhau giữa abstract class và interface.
+Các bạn nên chú ý các phương thức của interface là abstract 100%, trong abstract class có thể có phương thức không phải abstract.
+Trong thiết kế phần mềm, interface thường được dùng để chỉ 2 hay nhiều class cùng làm việc gì đó (ví dụ cùng in - Printable), trong khi abstract class thường hướng đến quan hệ cha con trong lập trình hướng đối tượng.

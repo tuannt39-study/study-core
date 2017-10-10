@@ -1,0 +1,109 @@
+- Lớp TreeMap trong Java
+
+- Lớp TreeMap trong Java
+
++ Lớp TreeMap trong Java triển khai Map Interface bởi sử dụng một tree.
+Một TreeMap cung cấp các phương thức hiệu quả để lưu giữ các cặp key/value trong thứ tự được sắp xếp, và cho phép thu hồi nhanh chóng.
+
++ Bạn nên chú ý rằng, không giống một hash map, một tree map bảo đảm rằng các phần tử của nó sẽ được xếp thứ tự theo thứ tự key tăng dần.
+
++ Lớp TreeMap trong Java hỗ trợ 4 constructor. Mẫu đầu tiên xây dựng một tree map trống mà sẽ được xếp thứ tự bởi sử dụng thứ tự tự nhiên cho các key.
+TreeMap( )
+
++ Constructor thứ hai xây dựng một tree map trống mà sẽ được xếp thứ tự bởi sử dụng Comparator comp:
+TreeMap(Comparator comp)
+
++ Constructor thứ ba khởi tạo một tree map với các entry từ m, mà sẽ được xếp thứ tự tự nhiên các key của nó.
+TreeMap(Map m)
+
++ Constructor thứ 4 khởi tạo một tree map với các entry từ m, mà sẽ được xếp thứ tự giống như sm:
+TreeMap(SortedMap sm)
+
+- Phương thức và Miêu tả
+
++ void clear()
+Gỡ bỏ tất cả ánh xạ (mapping) từ TreeMap này
+
++ Object clone()
+Trả về một shallow copy của TreeMap này
+
++ Comparator comparator()
+Trả về comparator được sử dụng để xếp thứ tự map này, hoặc trả về null nếu map này sử dụng cách sắp xếp theo thứ tự tự nhiên các key của nó
+
++ boolean containsKey(Object key)
+Trả về true nếu map này chứa một ánh xạ cho key đã xác định
+
++ boolean containsValue(Object value)
+Trả về true nếu map này so khớp một hoặc nhiều key tới value đã cho
+
++ Set entrySet()
+Trả về một tập hợp các ánh xạ được chứa trong map này
+
++ Object firstKey()
+Trả về key đầu tiên (thấp nhất) trong sorted map này
+
++ Object get(Object key)
+Trả về value từ đó map này so khớp với key đã cho
+
++ SortedMap headMap(Object toKey)
+Trả về một phần map này có các key nhỏ hơn toKey
+
++ Set keySet()
+Trả về một Set các key được chứa trong map này
+
++ Object lastKey()
+Trả về key cuối cùng (cao nhất) trong sorted map này
+
++ Object put(Object key, Object value)
+Liên kết value đã cho với key đã xác định trong map này
+
++ void putAll(Map map)
+Sao chép tất cả ánh xạ từ map đã cho tới map này
+
++ Object remove(Object key)
+Gỡ bỏ ánh xạ cho key này từ TreeMap nếu có mặt
+
++ int size()
+Trả về số ánh xạ key-value trong map này
+
++ SortedMap subMap(Object fromKey, Object toKey)
+Trả về một phần map này mà có các key từ fromKey tới toKey
+
++ SortedMap tailMap(Object fromKey)
+Trả về một phần map này mà có key lớn hơn hoặc bằng fromKey
+
++ Collection values()
+Trả về một tập hợp các value được chứa trong map này
+
+- Ví dụ
+
+public class TreeMapDemo {
+
+   public static void main(String args[]) {
+      // Tao mot hash map
+      TreeMap tm = new TreeMap();
+      // Dat cac phan tu vao map
+      tm.put("Zara", new Double(3434.34));
+      tm.put("Mahnaz", new Double(123.22));
+      tm.put("Ayan", new Double(1378.00));
+      tm.put("Daisy", new Double(99.22));
+      tm.put("Qadir", new Double(-19.08));
+      
+	  // Lay mot tap hop cac entry
+      Set set = tm.entrySet();
+      // Lay mot iterator
+      Iterator i = set.iterator();
+      // Hien thi cac phan tu
+      while(i.hasNext()) {
+         Map.Entry me = (Map.Entry)i.next();
+         System.out.print(me.getKey() + ": ");
+         System.out.println(me.getValue());
+      }
+      System.out.println();
+      // Gui 1000 vao trong tai khoan cua Zara
+      double balance = ((Double)tm.get("Zara")).doubleValue();
+      tm.put("Zara", new Double(balance + 1000));
+      System.out.println("Balance hien tai cua Zara la: " +
+      tm.get("Zara"));
+   }
+}

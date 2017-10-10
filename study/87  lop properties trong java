@@ -1,0 +1,76 @@
+- Lớp Properties trong Java
+
+- Lớp Properties trong Java
+
++ Lớp Properties trong Java là lớp phụ của lớp Hashtable.
+Nó được sử dụng để duy trì các danh sách của các value trong đó key là một String và value cũng là một String.
+
++ Lớp Properties được sử dụng bởi nhiều lớp Java khác.
+Ví dụ, nó là kiểu đối tượng được trả về bởi System.getProperties() khi đạt được các value môi trường.
+
++ Properties định nghĩa các biến instance sau. Biến này giữ một property list mặc định mà liên kết với một đối tượng Properties trong Java.
+Properties defaults;
+
++ Properties định nghĩa hai constructor. Phiên bản đầu tiên tạo một đối tượng Properties mà không có giá trị mặc định:
+Properties( )
+
++ Form thứ hai tạo một đối tượng mà sử dụng propDefault cho các value mặc định của nó. Trong cả hai trường hợp, property list đều là trống.
+Properties(Properties propDefault)
+
+- Phương thức và Miêu tả
+
++ String getProperty(String key)
+Trả về value mà liên kết với key. Một đối tượng null được trả về nếu key hoặc không có trong danh sách hoặc không có trong property list mặc định
+
++ String getProperty(String key, String defaultProperty)
+Trả về value mà liên kết với key. defaultPropperty được trả về nếu key hoặc không có trong danh sách hoặc không có trong property list mặc định
+
++ void list(PrintStream streamOut)
+Gửi property list tới output stream mà liên kết tới streamOut
+
++ void list(PrintWriter streamOut)
+Gửi property list tới output stream mà liên kết tới streamOut
+
++ void load(InputStream streamIn) throws IOException
+Nhập một property list từ input stream mà liên kết tới streamIn
+
++ Enumeration propertyNames( )
+Trả về một bản liệt kê các key. Nó cũng bao gồm các key được tìm thấy trong property list mặc định
+
++ Object setProperty(String key, String value)
+Liên kết value với key. Trả về value trước mà liên kết với key, hoặc trả về null nếu không có liên kết nào tồn tại
+
++ void store(OutputStream streamOut, String description)
+Sau khi ghi chuỗi được xác định bởi description, property list được ghi tới output stream mà liên kết tới streamOut
+
+- Ví dụ
+
+public class PropDemo {
+
+   public static void main(String args[]) {
+      Properties capitals = new Properties();
+      Set states;
+      String str;
+      
+      capitals.put("Illinois", "Springfield");
+      capitals.put("Missouri", "Jefferson City");
+      capitals.put("Washington", "Olympia");
+      capitals.put("California", "Sacramento");
+      capitals.put("Indiana", "Indianapolis");
+
+      // Hien thi tat ca cac state va capital trong hashtable.
+      states = capitals.keySet(); // lay set-view cua cac key
+      Iterator itr = states.iterator();
+      while(itr.hasNext()) {
+         str = (String) itr.next();
+         System.out.println("Thu phu cua " +
+            str + " la " + capitals.getProperty(str) + ".");
+      }
+      System.out.println();
+
+      // tim kiem state khong co trong list -- xac dinh mac dinh
+      str = capitals.getProperty("Florida", "Not Found");
+      System.out.println("Thu phu cua Florida la "
+          + str + ".");
+   }
+}

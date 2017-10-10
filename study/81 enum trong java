@@ -1,0 +1,37 @@
+- Enum trong Java
+
+- Enum trong Java
+
++ [Enum trong Java] Enum trong Java định nghĩa các phương thức từ đó bạn có thể liệt kê (từng phần tử tại một thời điểm) các phần tử trong một tập hợp các đối tượng.
+
++ Interface này kế thừa từ Iterator. Mặc dù không bị deprecated (đánh dấu phương thức của phiên bản cũ), nhưng Enumeration được xem như là đã cũ so với hệ thống code mới bây giờ. 
+Tuy nhiên, nó được sử dụng bởi một vài phương thức được định nghĩa bởi các lớp legacy như Vector và Properties, được sử dụng bởi một số lớp API khác, và hiện tại sử dụng rộng rãi trong code ứng dụng.
+
+- Phương thức và Miêu tả
+
++ boolean hasMoreElements( )
+Khi được triển khai, nó phải trả về true trong khi vẫn còn nhiều phần tử để extract, và false khi tất cả phần tử đã được liệt kê
+
++ Object nextElement( )
+Trả về đối tượng kế tiếp trong Enumeration như là một tham chiếu generic Object
+
+- Ví dụ
+
+public class EnumerationTester {
+
+   public static void main(String args[]) {
+      Enumeration days;
+      Vector dayNames = new Vector();
+      dayNames.add("Sunday");
+      dayNames.add("Monday");
+      dayNames.add("Tuesday");
+      dayNames.add("Wednesday");
+      dayNames.add("Thursday");
+      dayNames.add("Friday");
+      dayNames.add("Saturday");
+      days = dayNames.elements();
+      while (days.hasMoreElements()){
+         System.out.println(days.nextElement()); 
+      }
+   }
+}

@@ -1,0 +1,61 @@
+- Lớp Stack trong Java
+
+- Lớp Stack trong Java
+
++ Lớp Stack là một lớp phụ của lớp Vector trong Java mà triển khai một last-in-first-out (LIFO) stack.
+Bạn có thể nghĩ về Stack như là một ngăn xếp thẳng đứng.
+
++ Stack chỉ định nghĩa constructor mặc định, mà tạo một stack trống.
+Lớp Stack bao gồm tất cả phương thức được định nghĩa bởi lớp Vector, và một số phương thức khác của riêng nó.
+Stack( )
+
+- Phương thức và Miêu tả
+
++ boolean empty()
+Kiểm tra nếu Stack này là trống. Trả về true nếu nó trống và false nếu stack chứa các phần tử
+
++ Object peek( )
+Trả về phần tử trên cùng của Stack, nhưng không gỡ bỏ nó
+
++ Object pop( )
+Trả về phần tử trên cùng của Stack, gỡ bỏ nó
+
++ Object push(Object element)
+Đẩy phần tử lên trên cùng của Stack. Cũng trả về phần tử đó
+
++ int search(Object element)
+Tìm kiếm phần tử trong Stack. Nếu tìm thấy, offset của nó từ trên cùng của Stack được trả về. Nếu không, nó trả về -1
+
+- Ví dụ
+
+public class StackDemo {
+
+   static void showpush(Stack st, int a) {
+      st.push(new Integer(a));
+      System.out.println("push(" + a + ")");
+      System.out.println("stack: " + st);
+   }
+
+   static void showpop(Stack st) {
+      System.out.print("pop -> ");
+      Integer a = (Integer) st.pop();
+      System.out.println(a);
+      System.out.println("stack: " + st);
+   }
+
+   public static void main(String args[]) {
+      Stack st = new Stack();
+      System.out.println("stack: " + st);
+      showpush(st, 42);
+      showpush(st, 66);
+      showpush(st, 99);
+      showpop(st);
+      showpop(st);
+      showpop(st);
+      try {
+         showpop(st);
+      } catch (EmptyStackException e) {
+         System.out.println("empty stack");
+      }
+   }
+}

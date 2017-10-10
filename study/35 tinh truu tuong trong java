@@ -1,0 +1,170 @@
+- Tính trừu tượng trong Java
+
+- Tính trừu tượng trong Java
+
++ Tính trừu tượng (Abstraction) trong Java hướng đến khả năng tạo một đối tượng trừu tượng trong lập trình hướng đối tượng.
+Một lớp trừu tượng là một lớp mà không được khởi tạo.
+Tất cả các chức năng khác của lớp vẫn tồn tại, và tất cả các trường, phương thức, và hàm khởi tạo đều được truy cập với một cách giống nhau.
+Bạn không thể tạo một đối tượng với một lớp trừu tượng hóa.
+
++ Nếu một lớp là lớp trừu tượng và nó không được khởi tạo, lớp này không được sử dụng trừ khi nó là lớp con.
+
+- Lớp Abstract trong Java
+
++ Sử dụng từ khóa abstract để khai báo một lớp abstract. Từ khóa này xuất hiện trước từ khóa class trong khai báo lớp.
+
+/* Ten File : Employee.java */
+public abstract class Employee {
+	private String name;
+	private String address;
+	private int number;
+
+	public Employee(String name, String address, int number) {
+		System.out.println("Xay dung mot Employee");
+		this.name = name;
+		this.address = address;
+		this.number = number;
+	}
+
+	public double computePay() {
+		System.out.println("Ben trong Employee computePay");
+		return 0.0;
+	}
+
+	public void mailCheck() {
+		System.out.println("Gui mail kiem tra toi " + this.name + " " + this.address);
+	}
+
+	public String toString() {
+		return name + " " + address + " " + number;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String newAddress) {
+		address = newAddress;
+	}
+
+	public int getNumber() {
+		return number;
+	}
+}
+
++ Bạn chú ý rằng không có gì khác trong lớp Employee này.
+Lớp này bây giờ là abstract, nhưng nó vẫn có 3 trường, 7 phương thức và một constructor.
+
+Bây giờ, nếu chúng ta thử làm như sau:
+
+/* Ten File : AbstractDemo.java */
+public class AbstractDemo {
+	public static void main(String [] args) {
+		/* Phan sau la khong duoc phep va se tao mot error */
+		Employee e = new Employee("George W.", "Houston, TX", 43);
+
+		System.out.println("\n Goi mailCheck boi su dung tham chieu Employee --");
+		e.mailCheck();
+	}
+}
+
+Khi bạn biên dịch lớp trên, bạn sẽ nhận một lỗi
+
+- Kế thừa lớp Abstract trong Java
+
++ Chúng ta có thể kế thừa lớp Employee theo cách thông thường như sau:
+
+/* Ten File : Salary.java */
+public class Salary extends Employee {
+	private double salary; //Annual salary
+
+	public Salary(String name, String address, int number, double salary) {
+		super(name, address, number);
+		setSalary(salary);
+	}
+
+	public void mailCheck() {
+		System.out.println("Ben trong mailCheck cua Salary class ");
+		System.out.println("Gui mail kiem tra toi " + getName() + " voi salary la " + salary);
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double newSalary) {
+		if(newSalary >= 0.0) {
+			salary = newSalary;
+			}
+ 	}
+
+	public double computePay() {
+		System.out.println("Tinh toan luong tra cho " + getName());
+		return salary/52;
+	}
+}
+
++ Ở đây, chúng ta không thể khởi tạo một Employee mới, nhưng nếu chúng ta khởi tạo một đối tượng Salary mới, đối tượng Salary này sẽ kế thừa 3 trường, 7 phương thức từ Employee.
+
+/* Ten File : AbstractDemo.java */
+public class AbstractDemo {
+	public static void main(String [] args) {
+		Salary s = new Salary("Mohd Mohtashim", "Ambehta, UP", 3, 3600.00);
+		Employee e = new Salary("John Adams", "Boston, MA", 2, 2400.00);
+
+		System.out.println("Goi mailCheck boi su dung tham chieu Salary --");
+		s.mailCheck();
+
+		System.out.println("\n Goi mailCheck boi su dung tham chieu Employee --");
+		e.mailCheck();
+	}
+}
+
+- Phương thức của lớp Abstract trong Java
+
++ Nếu bạn muốn một lớp chứa một phương thức cụ thể nhưng bạn muốn triển khai thực sự phương thức đó để được quyết định bởi các lớp con,
+thì bạn có thể khai báo phương thức đó trong lớp cha ở dạng abstract.
+
++ Từ khóa abstract được sử dụng để khai báo một phương thức dạng abstract.
+Một phương thức gồm một chữ số, và không có thân phương thức.
+
++ Phương thức abstract sẽ không có định nghĩa, và chữ số của nó được theo sau bởi dấu chấm phảy, không có dấu ngoặc móc ôm theo sau:
+
+public abstract class Employee {
+   private String name;
+   private String address;
+   private int number;
+   
+   public abstract double computePay();
+   
+   //Phan con lai cua dinh nghia class
+}
+
++ Khai báo một phương thức dạng abstract tạo hai kết quả sau:
+
+Lớp phải được khai báo abstract. Nếu một lớp chứa một phương thức abstract, thì lớp đó cũng phải là abstract.
+
+Bất kỳ lớp con nào phải hoặc override phương thức abstract hoặc khai bao abstract chính nó.
+
++ Một lớp con mà kế thừa một phương thức abstract phải ghi đè nó.
+Nếu nó không, thì nó phải là abstract và bất kỳ lớp con nào của chúng phải override nó.
+
++ Cuối cùng, một lớp con phải triển khai phương thức abstract, nếu không thì bạn sẽ có một cấu trúc phân cấp của các lớp abstract mà không thể được khởi tạo.
+
++ Nếu Salary đang kế thừa lớp Employee, thì nó cần triển khai phương thức computePay() như sau:
+
+/* Ten File : Salary.java */
+public class Salary extends Employee {
+   private double salary; // Annual salary
+  
+   public double computePay() {
+      System.out.println("Tinh toan luong tra cho " + getName());
+      return salary/52;
+   }
+
+   //Phan con lai cua dinh nghia class
+}

@@ -1,0 +1,157 @@
+- Thuật toán Collection trong Java
+
+- Thuật toán Collection trong Java
+
++ Collection Framework định nghĩa một số thuật toán mà có thể áp dụng tới các Collection và Map.
+
++ Những thuật toán này được định nghĩa như là các phương thức static bên trong lớp Collection.
+Một số phương thức có thể ném một ClassCastException, xảy ra khi cố gắng so sánh các kiểu không tương thích, hoặc ném một UnsupportedOperationException, xảy ra khi cố gắng sửa đổi một Unmodifiable Collection.
+
+- Phương thức và Miêu tả
+
++ static int binarySearch(List list, Object value, Comparator c)
+Tìm kiếm value trong list được sắp xếp theo c. Trả về vị trí của value trong list; hoặc trả về -1 nếu value không được tìm thấy
+
++ static int binarySearch(List list, Object value)
+Tìm kiếm value trong list. List phải được xếp thứ tự. Trả về vị trí của value trong list; trả về -1 nếu không tìm thấy value
+
++ static void copy(List list1, List list2)
+Sao chép các phần tử của list2 vào list1
+
++ static Enumeration enumeration(Collection c)
+Trả về một bản liệt kê qua c
+
++ static void fill(List list, Object obj)
+Gán obj tới mỗi phần tử của list
+
++ static int indexOfSubList(List list, List subList)
+Tìm kiếm trong list về sự xuất hiện đầu tiên của subList. Trả về chỉ mục của so khớp đầu tiên; trả về -1 nếu không có so khớp được tìm thấy
+
++ static int lastIndexOfSubList(List list, List subList)
+Tìm kiếm trong list về sự xuất hiện cuối cùng của subList. Trả về chỉ mục của so khớp đầu tiên; trả về -1 nếu không có so khớp được tìm thấy
+
++ static ArrayList list(Enumeration enum)
+Trả về một ArrayList mà chứa các phần tử của enum
+
++ static Object max(Collection c, Comparator comp)
+Trả về phần tử tối đa trong c như được xác định bởi comp
+
++ static Object max(Collection c)
+Trả về phần tử tối đa trong c như được xác định bởi thứ tự tự nhiên. Collection không cần xếp theo thứ tự
+
++ static Object min(Collection c, Comparator comp)
+Trả về phần tử tối thiểu trong c như được xác định bởi comp. Collection không cần xếp theo thứ tự
+
++ static Object min(Collection c)
+Trả về phần tử tối thiểu trong c như được xác định bởi thứ tự tự nhiên
+
++ static List nCopies(int num, Object obj)
+Trả về num bản sao của obj được chứa trong một list không đổi. num phải lớn hơn hoặc bằng 0
+
++ static boolean replaceAll(List list, Object old, Object new)
+Thay thế tất cả old bởi new trong list. Trả về true nếu có ít nhất một sự thay thế xảy ra. Nếu không là false
+
++ static void reverse(List list)
+Đảo ngược dãy trong list
+
++ static Comparator reverseOrder( )
+Trả về một comparator đảo ngược
+
++ static void rotate(List list, int n)
+Quay list bởi n vị trí tới bên phải. Để quay sang bên trái, sử dụng một giá trị âm cho n
+
++ static void shuffle(List list, Random r)
+Xáo trộn các phần tử trong list bởi sử dụng r như là một nguồn của các số ngẫu nhiên
+
++ static void shuffle(List list)
+Xáo trộn các phần tử trong list
+
++ static Set singleton(Object obj)
+Trả về obj như là một set không thay đổi. Đây là một cách dễ dàng để biến đổi một đối tượng đơn vào trong một set
+
++ static List singletonList(Object obj)
+Trả về obj như là một list không thay đổi. Đây là một cách dễ dàng để biến đổi một đối tượng đơn vào trong một list
+
++ static Map singletonMap(Object k, Object v)
+Trả về cặp key/value (k/v) như là một map không thay đổi. Đây là một cách dễ dàng để biến đổi một cặp key/value đơn vào trong một map
+
++ static void sort(List list, Comparator comp)
+Xếp thứ tự các phần tử trong list như đã xác định bởi comp
+
++ static void sort(List list)
+Xếp thứ tự các phần tử trong list như đã xác định bởi thứ tự tự nhiên
+
++ static void swap(List list, int idx1, int idx2)
+Trao đổi các phần tử trong list tại các chỉ mục được xác định bởi idx1 và idx2
+
++ static Collection synchronizedCollection(Collection c)
+Trả về một Collection an toàn luồng (thread-safe) bởi c
+
++ static List synchronizedList(List list)
+Trả về một thread-safe list bởi list
+
++ static Map synchronizedMap(Map m)
+Trả về một thread-safe map bởi m
+
++ static Set synchronizedSet(Set s)
+Trả về một thread-safe set bởi s
+
++ static SortedMap synchronizedSortedMap(SortedMap sm)
+Trả về một thread-safe sorted set bởi sm
+
++ static SortedSet synchronizedSortedSet(SortedSet ss)
+Trả về một thread-safe set bởi ss
+
++ static Collection unmodifiableCollection(Collection c)
+Trả về một unmodifiable collection bởi c
+
++ static List unmodifiableList(List list)
+Trả về một unmodifiable list bởi list
+
++ static Map unmodifiableMap(Map m)
+Trả về một unmodifiable map bởi m
+
++ static Set unmodifiableSet(Set s)
+Trả về một unmodifiable set bởi s
+
++ static SortedMap unmodifiableSortedMap(SortedMap sm)
+Trả về một unmodifiable sorted map bởi sm
+
++ static SortedSet unmodifiableSortedSet(SortedSet ss)
+Trả về một unmodifiable sorted set bởi ss
+
+- Ví dụ
+
+public class AlgorithmsDemo {
+
+   public static void main(String args[]) {
+      // Tao va khoi tao linked list
+      LinkedList ll = new LinkedList();
+      ll.add(new Integer(-8));
+      ll.add(new Integer(20));
+      ll.add(new Integer(-20));
+      ll.add(new Integer(8));
+      
+      // Ta mot comparator voi thu tu dao nguoc
+      Comparator r = Collections.reverseOrder();
+      // Sap xep list boi su dung comparator
+      Collections.sort(ll, r);
+      // Lay iterator
+      Iterator li = ll.iterator();
+      System.out.print("List duoc sap xep theo thu tu dao nguoc la: ");
+      while(li.hasNext()){
+         System.out.print(li.next() + " ");
+      }
+      System.out.println();
+      Collections.shuffle(ll);
+      // Hien thi danh sach sap xep ngau nhien
+      li = ll.iterator();
+      System.out.print("List sau khi bi xao tron la: ");
+      while(li.hasNext()){
+         System.out.print(li.next() + " ");
+      }
+      System.out.println();
+      System.out.println("Minimum: " + Collections.min(ll));
+      System.out.println("Maximum: " + Collections.max(ll));
+   }
+}

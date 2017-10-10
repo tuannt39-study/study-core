@@ -1,0 +1,128 @@
+- Lớp BitSet trong Java
+
+- Lớp BitSet trong Java
+
++ Lớp BitSet trong Java tạo một kiểu mảng đặc biệt mà giữ các giá trị bit.
+Mảng BitSet này có thể tăng giảm kích cỡ nếu cần.
+Điều này làm nó tương tự như một vector của các bit.
+
++ BitSet định nghĩa hai constructor. Phiên bản đầu tiên tạo một đối tượng mặc định:
+BitSet( )
+
++ Phiên bản thứ hai cho phép bạn xác định kích cỡ ban đầu của nó, ví dụ như số bit mà nó có thể giữ. Tất cả các bit được khởi tạo về 0.
+BitSet(int size)
+
+- Phương thức và Miêu tả
+
++ void and(BitSet bitSet)
+AND nội dung của đối tượng BitSet đang triệu hồi với nội dung đã được xác định bởi bitSet. Kết quả được đặt trong đối tượng đang triệu hồi
+
++ void andNot(BitSet bitSet)
+Với mỗi bit trong bitSet, bit tương ứng trong BitSet đang triệu hồi bị xóa
+
++ int cardinality( )
+Trả về số bit được thiết lập trong đối tượng đang triệu hồi
+
++ void clear( )
+Thiết lập tất cả bit về 0
+
++ void clear(int index)
+Thiết lập tất cả bit được xác định bởi index về 0
+
++ void clear(int startIndex, int endIndex)
+Thiết lập tất cả bit được xác định từ startIndex tới endIndex -1 về 0
+
++ Object clone( )
+Sao chép đối tượng BitSet đang triệu hồi
+
++ boolean equals(Object bitSet)
+Trả về true nếu BitSet đang triệu hồi là tương đương với thiết lập bit trong bitSet. Nếu không là false
+
++ void flip(int index)
+Đảo ngược các bit được xác định bởi index (
+
++ void flip(int startIndex, int endIndex)
+Đảo ngược các bit được xác định từ startIndex tới endIndex - 1
+
++ boolean get(int index)
+Trả về trạng thái hiện tại của bit tại index đã cho
+
++ BitSet get(int startIndex, int endIndex)
+Trả về một BitSet mà chứa các bit từ startIndex tới endIndex-1. Đối tượng đang triệu hồi không bị thay đổi
+
++ int hashCode( )
+Trả về hash code cho đối tượng đang triệu hồi
+
++ boolean intersects(BitSet bitSet)
+Trả về true nếu ít nhất một cặp bit tương ứng trong đối tượng đang gọi và bitSet là 1
+
++ boolean isEmpty( )
+Trả về true nếu tất cả bit trong đối tượng đang gọi là 0
+
++ int length( )
+Trả về số bit cần thiết để giữ nội dung của BitSet đang gọi. Giá trị này được xác định bởi vị trí của bit cuối cùng
+
++ int nextClearBit(int startIndex)
+Trả về chỉ mục của bit bị xóa kế tiếp (mà là zero bit kế tiếp), bắt đầu từ chỉ mục được xác định bởi startIndex
+
++ int nextSetBit(int startIndex)
+Trả về chỉ mục của set bit kế tiếp (mà là 1 bit kế tiếp), bắt đầu từ chỉ mục được xác định bởi startIndex. Nếu không bit nào được thiết lập, thì trả về - 1
+
++ void or(BitSet bitSet)
+OR nội dung của đối tượng BitSet đang gọi với nội dung được thiết lập bởi bitSet. Kết quả được đặt trong đối tượng đang triệu hồi
+
++ void set(int index)
+Thiết lập bit được xác định bởi index
+
++ void set(int index, boolean v)
+Thiết lập bit được xác định bởi index tới giá trị được truyền trong v: nếu là true thì thiết lập bit, là false thì xóa bit đó
+
++ void set(int startIndex, int endIndex)
+Thiết lập bit từ startIndex tới endIndex - 1
+
++ void set(int startIndex, int endIndex, boolean v)
+Thiết lập bit, từ startIndex tới endIndex-1, tới giá trị được truyền trong v: nếu là true thì thiết lập bit, là false thì xóa bit đó
+
++ int size( )
+Trả về số bit trong đối tượng BitSet đang gọi
+
++ String toString( )
+Trả về chuỗi tương đương của đối tượng BitSet đang gọi
+
++ void xor(BitSet bitSet)
+XOR nội dung của đối tượng BitSet đang gọi với nội dung được xác định bởi bitSet. Kết quả được đặt trong đối tượng đang gọi
+
+- Ví dụ
+
+public class BitSetDemo {
+
+  public static void main(String args[]) {
+     BitSet bits1 = new BitSet(16);
+     BitSet bits2 = new BitSet(16);
+      
+     // thiet la mot so bit
+     for(int i=0; i<16; i++) {
+        if((i%2) == 0) bits1.set(i);
+        if((i%5) != 0) bits2.set(i);
+     }
+     System.out.println("Pattern ban dau trong bits1: ");
+     System.out.println(bits1);
+     System.out.println("\nPattern ban dau trong bits2: ");
+     System.out.println(bits2);
+
+     // AND bits
+     bits2.and(bits1);
+     System.out.println("\nbits2 AND bits1: ");
+     System.out.println(bits2);
+
+     // OR bits
+     bits2.or(bits1);
+     System.out.println("\nbits2 OR bits1: ");
+     System.out.println(bits2);
+
+     // XOR bits
+     bits2.xor(bits1);
+     System.out.println("\nbits2 XOR bits1: ");
+     System.out.println(bits2);
+  }
+}

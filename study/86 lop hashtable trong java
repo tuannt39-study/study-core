@@ -1,0 +1,105 @@
+- Lớp Hashtable trong Java
+
+- Lớp Hashtable trong Java
+
++ Lớp Hashtable trong Java là một phần của java.util gốc và là một sự triển khai cụ thể của một Dictionary.
+
++ Tuy nhiên, Java 2 đã thiết kế lại Hashtable để nó cũng triển khai Map Interface. Vì thế, lớp Hashtable bây giờ được tích hợp vào trong Collection Framework. Nó tương tự như HashMap, nhưng nó được đồng bộ.
+
++ Giống như HashMap, lớp Hashtable lưu giữ các cặp key/value trong một hash table.
+Khi sử dụng một Hashtable, bạn xác định một đối tượng mà được sử dụng như là một key, và value mà bạn muốn liên kết tới key đó.
+Key này sau đó được hash, và hash code kết quả được sử dụng như là chỉ mục, tại đó value được lưu giữ bên trong table đó.
+
++ Lớp Hashtable định nghĩa 4 constructor. Phiên bản đầu tiên là constructor mặc định:
+Hashtable( )
+
++ Phiên bản thứ hai tạo một Hashtable mà có kích cỡ khởi tạo được xác định bởi size:
+Hashtable(int size)
+
++ Phiên bản thứ ba tạo một Hashtable mà có kích cỡ khởi tạo được xác định bởi size và một fill ratio được xác định bởi fillRatio:
+
+Ratio này phải nằm giữa 0.0 và 1.0, và nó quyết định độ full của hash table trước khi nó được resize.
+Hashtable(int size, float fillRatio)
+
++ Phiên bản thứ tư tạo một Hashtable mà mà được khởi tạo với các phần tử trong m.
+
+Dung lượng của Hash table đó được thiết lập là gấp hai lần số phần tử trong m. Hệ số tải (load factor) là 0.75 được sử dụng.
+
+Hashtable(Map m)
+
+- Phương thức và Miêu tả
+
++ void clear( )
+Reset và làm trống hash table
+
++ Object clone( )
+Trả về một bản sao của đối tượng đang gọi
+
++ boolean contains(Object value)
+Trả về true nếu value cân bằng với value tồn tại bên trong hash table. Trả về false nếu value đó không được tìm thấy
+
++ boolean containsKey(Object key)
+Trả về true nếu key cân bằng với key tồn tại bên trong hash table. Trả về false nếu key đó không được tìm thấy
+
++ boolean containsValue(Object value)
+Trả về true nếu value cân bằng với value tồn tại bên trong hash table. Trả về false nếu value đó không được tìm thấy
+
++ Enumeration elements( )
+Trả về một bản liệt kê các value được chứa trong hash table
+
++ Object get(Object key)
+Trả về đối tượng mà chứa value mà liên kết với key. Nếu key không có trong hash table, một đối tượng null được trả về
+
++ boolean isEmpty( )
+Trả về true nếu hash table là trống; nếu nó chứa ít nhất một key thì trả về false
+
++ Enumeration keys( )
+Trả về một bản liệt kê các key được chứa trong hash table
+
++ Object put(Object key, Object value)
+Chèn một key và một value vào trong hash table. Trả về null nếu key đã không có trong hash table; trả về value trước mà liên kết với key nếu key đã có trong hash table
+
++ void rehash( )
+Tăng kích cỡ của hash table và làm lại mới tất cả các key của nó
+
++ Object remove(Object key)
+Gỡ bỏ key và value của nó. Trả về value mà liên kết với key. Nếu key không có trong hash table, một đối tượng null được trả về
+
++ int size( )
+Trả về số entry trong hash table
+
++ String toString( )
+Trả về biểu diễn chuỗi tương đương của một hash table
+
+- Ví dụ
+
+public class HashTableDemo {
+
+   public static void main(String args[]) {
+      // tao mot hash map
+      Hashtable balance = new Hashtable();
+      Enumeration names;
+      String str;
+      double bal;
+
+      balance.put("Zara", new Double(3434.34));
+      balance.put("Mahnaz", new Double(123.22));
+      balance.put("Ayan", new Double(1378.00));
+      balance.put("Daisy", new Double(99.22));
+      balance.put("Qadir", new Double(-19.08));
+
+      // Hien thi tat ca balance trong hash table.
+      names = balance.keys();
+      while(names.hasMoreElements()) {
+         str = (String) names.nextElement();
+         System.out.println(str + ": " +
+         balance.get(str));
+      }
+      System.out.println();
+      // Gui 1,000 vao tai khoan cua Zara
+      bal = ((Double)balance.get("Zara")).doubleValue();
+      balance.put("Zara", new Double(bal+1000));
+      System.out.println("Balance moi cua Zara la: " +
+      balance.get("Zara"));
+   }
+}

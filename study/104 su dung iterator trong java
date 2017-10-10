@@ -1,0 +1,117 @@
+- Sử dụng Iterator trong Java
+
+- Sử dụng Iterator trong Java
+
++ Thường thì, bạn sẽ muốn tuần hoàn qua các phần tử trong một tập hợp.
+Ví dụ, bạn có thể muốn hiển thị mỗi phần tử.
+
++ Cách đơn giản nhất để thực hiện điều này là thuê một Iterator, là một đối tượng mà triển khai hoặc Iterator hoặc Listlerator interface.
+
++ Iterator cho bạn khả năng để tuần hoàn qua một tập hợp, kiếm được và gỡ bỏ các phần tử. 
+ListIterator kế thừa Iterator để cho phép "vọc" song hướng một danh sách và sửa đổi các phần tử.
+
++ Trước khi bạn có thể truy cập một Collection thông qua một Iterator, bạn phải có được nó.
+Mỗi lớp Collection cung cấp một phương thức iterator() mà trả về một iterator tới phần bắt đầu của Collection.
+Bởi sử dụng đối tượng Iterator, bạn có thể truy cập mỗi phần tử trong Collection, từng phần tử một tại một thời điểm.
+
++ Nói chung, để sử dụng một iterator để tuần hoàn qua các nội dung của một Collection, bạn theo các bước sau:
+
+Đạt được một iterator tới phần đầu của Collection bằng cách gọi phương thức iterator() của Collection trong Java.
+
+Thiết lập một vòng lặp mà tạo triệu hồi tới hasNext(). Vòng lặp này lặp đi lặp lại tới khi hasNext() trả về true.
+
+Trong vòng lặp, thu được mỗi phần tử bởi triệu hồi phương thức next().
+
++ Với các Collection mà triển khai List, bạn cũng có thể thu được một interator bởi triệu hồi ListIterator.
+
+- Phương thức được khai báo bởi Iterator trong Java
+
++ boolean hasNext( )
+Trả về true nếu có nhiều phần tử. Nếu không là false
+
++ Object next( )
+Trả về phần tử kế tiếp. Ném NoSuchElementException nếu không có một phần tử kế tiếp
+
++ void remove( )
+Gỡ bỏ phần tử hiện tại. Ném IllegalStateException nếu cố gắng gọi phương thức remove() mà không được đặt trước một triệu hồi tới next()
+
+- Phương thức được khai báo bởi ListIterator trong Java
+
++ void add(Object obj)
+Chèn obj vào trong List ở trước phần tử mà sẽ được trả về bởi lần triệu hồi tiếp theo tới next()
+
++ boolean hasNext( )
+Trả về true nếu có một phần tử kế tiếp. Nếu không là false
+
++ boolean hasPrevious( )
+Trả về true nếu có một phần tử ở trước. Nếu không là false
+
++ Object next( )
+Trả về phần tử kế tiếp. Ném NoSuchElementException nếu không có phần tử đó
+
++ int nextIndex( )
+Trả về chỉ mục của phần tử kế tiếp. Nếu không có phần tử này, trả về kích cỡ của list
+
++ Object previous( )
+Trả về phần tử trước. Ném NoSuchElementException nếu không có phần tử đó
+
++ int previousIndex( )
+Trả về chỉ mục của phần tử ở trước. Nếu không có phần tử này, trả về -1
+
++ void remove( )
+Gỡ bỏ phần tử hiện tại từ list. Ném IllegalStateException nếu remove() được triệu hồi trước khi next() hoặc previous() được gọi
+
++ void set(Object obj)
+Gán obj tới phần tử hiện tại. Đây là phần tử cuối cùng được trả về bởi một triệu hồi tới hoặc next() hoặc previous()
+
+- Ví dụ
+
++ Sau đây là ví dụ minh họa cả Iterator và ListIterator. Nó sử dụng một đối tượng ArrayList, nhưng các qui tắc chung áp dụng tới bất kỳ kiểu Collection nào.
+
++ Tất nhiên, ListIterator chỉ có sẵn cho các Collection mà triển khai List Interface trong Java:
+
+public class IteratorDemo {
+
+   public static void main(String args[]) {
+      // Tao mot array list
+      ArrayList al = new ArrayList();
+      // them cac phan tu toi array list
+      al.add("C");
+      al.add("A");
+      al.add("E");
+      al.add("B");
+      al.add("D");
+      al.add("F");
+
+      // Su dung iterator de hien thi noi dung cua array list
+      System.out.print("Noi dung ban dau cua ArrayList la: ");
+      Iterator itr = al.iterator();
+      while(itr.hasNext()) {
+         Object element = itr.next();
+         System.out.print(element + " ");
+      }
+      System.out.println();
+      
+	  // Sua doi cac doi tuong sau khi da duoc lap qua
+      ListIterator litr = al.listIterator();
+      while(litr.hasNext()) {
+         Object element = litr.next();
+         litr.set(element + "+");
+      }
+      System.out.print("Noi dung sau khi sua doi cua ArrayList la: ");
+      itr = al.iterator();
+      while(itr.hasNext()) {
+         Object element = itr.next();
+         System.out.print(element + " ");
+      }
+      System.out.println();
+
+      // Bay gio, hien thi list theo chieu nguoc lai
+      System.out.print("Hien thi list theo chieu nguoc lai: ");
+      while(litr.hasPrevious()) {
+         Object element = litr.previous();
+         System.out.print(element + " ");
+       }
+       System.out.println();
+    }
+}

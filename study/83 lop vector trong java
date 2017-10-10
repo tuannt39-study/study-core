@@ -1,0 +1,196 @@
+- Lớp Vector trong Java
+
+- Lớp Vector trong Java
+
++ Lớp Vector trong Java triển khai một mảng động. Nó tương tự như ArrayList, nhưng với hai điểm khác biệt:
+
+Vector được đồng bộ.
+
+Vector chứa các phương thức legacy mà không là một phần của Collection Framework.
+
++ Lớp Vector trong Java được chứng minh rất hữu ích nếu bạn không biết kích cỡ của mảng hoặc bạn chỉ cần một thứ mà có thể thay đổi kích cỡ thông qua vòng đời của một chương trình.
+
++ Lớp Vector trong Java hỗ trợ 4 constructor. Form đầu tiên tạo một vector mặc định, mà có kích cỡ khởi tạo là 10:
+Vector( )
+
++ Form thứ hai tạo một vector mà dung lượng khởi tạo được xác định bởi size:
+Vector(int size)
+
++ Form thứ ba tạo một vector mà dung lượng khởi tạo được xác định bởi size và lượng gia của nó được xác định bởi incr. Lượng gia xác định số phần tử để cấp phát mỗi khi một vector được resize:
+Vector(int size, int incr)
+
++ Form thứ tư tạo một vector mà chứa các phần tử của collection c:
+Vector(Collection c)
+
+- Phương thức và Miêu tả
+
++ void add(int index, Object element)
+Chèn element đã xác định tại vị trí đã cho trong Vector này
+
++ boolean add(Object o)
+Phụ thêm phần tử đã cho vào cuối của Vector này
+
++ boolean addAll(Collection c)
+Phụ thêm tất cả phần tử trong Collection đã xác định tới cuối của Vector này, để mà chúng được trả về bởi Iterator của Collection đã cho đó
+
++ boolean addAll(int index, Collection c)
+Chèn tất cả phần tử trong Collection đã xác định vào trong Vector này tại vị trí đã cho
+
++ void addElement(Object obj)
+Thêm phần tử đã cho tới cuối của Vector này, tăng kích cỡ nó thêm 1
+
++ int capacity()
+Trả về dung lượng hiện tại của Vector này
+
++ void clear()
+Gỡ bỏ tất cả phần tử từ Vector này
+
++ Object clone()
+Trả về một mô phỏng của Vector này
+
++ boolean contains(Object elem)
+Kiểm tra nếu đối tượng đã cho là một phần tử trong Vector này
+
++ boolean containsAll(Collection c)
+Trả về true nếu Vector này chứa tất cả phần tử trong Collection đã cho
+
++ void copyInto(Object[] anArray)
+Sao chép các thành phần của Vector này vào trong mảng đã cho
+
++ Object elementAt(int index)
+Trả về phần tử tại index đã cho
+
++ Enumeration elements()
+Trả về một bản liệt kê các phần tử của Vector này
+
++ void ensureCapacity(int minCapacity)
+Tăng dung lượng của Vector này, nếu cần thiết, để bảo đảm rằng nó có thể giữ ít nhất số các phần tử được xác định bởi tham số minCapacity
+
++ boolean equals(Object o)
+So sánh Object đã cho với Vector này về sự cân bằng
+
++ Object firstElement()
+Trả về phần tử đầu tiên (tại chỉ mục 0) của Vector này
+
++ Object get(int index)
+Trả về phần tử tại vị trí đã cho trong Vector này
+
++ int hashCode()
+Trả về giá trị hash code cho Vector này
+
++ int indexOf(Object elem)
+Tìm kiếm sự xuất hiện đầu tiên của tham số đã cho, kiểm tra tính cân bằng bởi sử dụng phương thức equals
+
++ int indexOf(Object elem, int index)
+Tìm kiếm sự xuất hiện đầu tiên của tham số đã cho, bắt đầu tìm kiếm tại index, kiểm tra tính cân bằng bởi sử dụng phương thức equals
+
++ void insertElementAt(Object obj, int index)
+Chèn đối tượng đã cho như là một phần tử vào Vector này tại index đã cho
+
++ boolean isEmpty()
+Kiểm tra nếu Vector này không có phần tử
+
++ Object lastElement()
+Trả về phần tử cuối cùng của Vector này
+
++ int lastIndexOf(Object elem)
+Trả về chỉ mục của sự xuất hiện cuối cùng của đối tượng đã cho trong Vector này
+
++ int lastIndexOf(Object elem, int index)
+Tìm kiếm ngược về sau cho đối tượng đã cho, bắt đầu từ index đã xác định, và trả về một chỉ mục
+
++ Object remove(int index)
+Gỡ bỏ phần tử tại vị trí đã cho trong Vector này
+
++ boolean remove(Object o)
+Gỡ bỏ sự xuất hiện đầu tiên của phần tử đã cho trong Vector này. Nếu Vector này không chứa phần tử đó, nó không bị thay đổi
+
++ boolean removeAll(Collection c)
+Gỡ bỏ tất cả phần tử, mà chứa trong Collection đã cho, từ Vector này
+
++ void removeAllElements()
+Gỡ bỏ tất cả phần tử từ Vector này và thiết lập kích cỡ về 0
+
++ boolean removeElement(Object obj)
+Gỡ bỏ sự xuất hiện đầu tiên (chỉ mục thấp nhất) của tham số từ Vector này
+
++ void removeElementAt(int index)
+removeElementAt(int index)
+
++ protected void removeRange(int fromIndex, int toIndex)
+Gỡ bỏ từ danh sách này tất cả phần tử mà có index từ fromIndex tới toIndex
+
++ boolean retainAll(Collection c)
+Chỉ giữ lại phần tử, mà ở trong Collection đã cho, trong Vector này
+
++ Object set(int index, Object element)
+Thay thế phần tử tại vị trí đã cho trong Vector này với phần tử đã xác định
+
++ void setElementAt(Object obj, int index)
+Thiết lập phần tử tại index đã cho của Vector này thành đối tượng đã xác định
+
++ void setSize(int newSize)
+Thiết lập kích cỡ của Vector này
+
++ int size()
+Trả về số phần tử trong Vector này
+
++ List subList(int fromIndex, int toIndex)
+Trả về một danh sách phụ từ fromIndex tới toIndex
+
++ Object[] toArray()
+Trả về một mảng chứa tất cả phần tử trong Vector này theo đúng thứ tự
+
++ Object[] toArray(Object[] a)
+Trả về một mảng chứa tất cả phần tử trong Vector này theo đúng thứ tự; kiểu runtime của mảng trả về là mảng đã xác định
+
++ String toString()
+Trả về một biểu diễn chuỗi của Vector này, chứa biểu diễn chuỗi của mỗi phần tử
+
++ void trimToSize()
+Trim dung lượng của Vector này về kích cỡ hiện tại của vector
+
+- Ví dụ
+
+public class VectorDemo {
+
+   public static void main(String args[]) {
+      // capacity ban dau la 3, incr la 2
+      Vector v = new Vector(3, 2);
+      System.out.println("Size ban dau: " + v.size());
+      System.out.println("Capacity ban dau: " +
+      v.capacity());
+      v.addElement(new Integer(1));
+      v.addElement(new Integer(2));
+      v.addElement(new Integer(3));
+      v.addElement(new Integer(4));
+      System.out.println("Capacity sau 4 lan cong la: " +
+          v.capacity());
+
+      v.addElement(new Double(5.45));
+      System.out.println("Capacity hien tai: " +
+      v.capacity());
+      v.addElement(new Double(6.08));
+      v.addElement(new Integer(7));
+      System.out.println("Capacity hien tai: " +
+      v.capacity());
+      v.addElement(new Float(9.4));
+      v.addElement(new Integer(10));
+      System.out.println("Capacity hien tai: " +
+      v.capacity());
+      v.addElement(new Integer(11));
+      v.addElement(new Integer(12));
+      System.out.println("Phan tu dau tien: " +
+         (Integer)v.firstElement());
+      System.out.println("Phan tu cuoi cung: " +
+         (Integer)v.lastElement());
+      if(v.contains(new Integer(3)))
+         System.out.println("Vector chua 3.");
+      // tinh toan so phan tu trong vector.
+      Enumeration vEnum = v.elements();
+      System.out.println("\nCac phan tu trong Vector:");
+      while(vEnum.hasMoreElements())
+         System.out.print(vEnum.nextElement() + " ");
+      System.out.println();
+   }
+}

@@ -1,0 +1,61 @@
+- Map.Entry Interface trong Java
+
+- Map.Entry Interface trong Java
+
++ Map.Entry Interface trong Java giúp bạn làm việc với một Map Entry.
+
++ Phương thức entrySet( ) được khai báo bởi Map Interface trả về một Set chứa các Map Entry.
+Mỗi phần tử Set này là một đối tượng Map.Entry trong Java.
+
+- Phương thức và Miêu tả
+
++ boolean equals(Object obj)
+Trả về true nếu obj là một Map.Entry mà key và value của nó là cân bằng với key và value của đối tượng đang gọi
+
++ Object getKey( )
+Trả về key cho map entry này
+
++ Object getValue( )
+Trả về value cho map entry này
+
++ int hashCode( )
+Trả về hash code cho map entry này
+
++ Object setValue(Object v)
+Thiết lập value cho map entry này là v.
+Một ClassCastException được ném nếu v không là kiểu đúng cho map đó.
+Một NullPointerException được ném nếu v là null và map đó không chấp nhận các null key. 
+Một UnsupportedOperationException được ném nếu map đó không thể bị thay đổi
+
+- Ví dụ
+
+public class HashMapDemo {
+
+   public static void main(String args[]) {
+      // Tao mot hash map
+      HashMap hm = new HashMap();
+      // Dat cac phan tu vao map
+      hm.put("Zara", new Double(3434.34));
+      hm.put("Mahnaz", new Double(123.22));
+      hm.put("Ayan", new Double(1378.00));
+      hm.put("Daisy", new Double(99.22));
+      hm.put("Qadir", new Double(-19.08));
+      
+      // Lay mot set cac entry
+      Set set = hm.entrySet();
+      // Lay mot iterator
+      Iterator i = set.iterator();
+      // Hien thi cac phan tu
+      while(i.hasNext()) {
+         Map.Entry me = (Map.Entry)i.next();
+         System.out.print(me.getKey() + ": ");
+         System.out.println(me.getValue());
+      }
+      System.out.println();
+      // Gui 1000 vao trong tai khoan cua Zara
+      double balance = ((Double)hm.get("Zara")).doubleValue();
+      hm.put("Zara", new Double(balance + 1000));
+      System.out.println("Balance moi cua Zara la: " +
+      hm.get("Zara"));
+   }
+}

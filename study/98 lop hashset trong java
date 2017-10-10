@@ -1,0 +1,73 @@
+- Lớp HashSet trong Java
+
+- Lớp HashSet trong Java
+
++ Lớp HashSet trong Java kế thừa AbstractSet và triển khai Set Interface. Nó tạo một collection mà sử dụng một hash table để lưu giữ.
+Lưu ý trong hashset chỉ chứa các phần tử duy nhất, không chấp nhận 2 phần tử trùng nhau
+
++ Một hash table lưu giữ thông tin bởi sử dụng một kỹ thuật được gọi là hashing.
+Trong hashing, nội dung mang tính thông tin của một key được sử dụng để quyết định một value duy nhất, được gọi là hash code của nó.
+
++ Hash code sau đó được sử dụng như là index, tại đó dữ liệu mà liên kết với key được lưu giữ.
+Phép biến đổi của key vào trong hash code của nó được thực hiện tự động.
+
++ Lớp HashSet trông Java hỗ trợ 4 constructor. Mẫu constructor đầu tiên xây dựng một hash set mặc định:
+HashSet( )
+
++ Constructor tiếp theo khởi tạo hash code bởi sử dụng các phần tử trong c.
+HashSet(Collection c)
+
++ Constructor tiếp theo khởi tạo dung lượng của hash set là capacity.
+capacity tự động tăng khi phần tử được thêm vào Hash.
+HashSet(int capacity)
+
++ Constructor tiếp theo khởi tạo cả dung lượng và fill ratio (cũng được gọi là dung lượng tải) của hash set từ các tham số của nó.
+HashSet(int capacity, float fillRatio)
+
++ Tại đây, fill ratio phải nằm giữa 0.0 và 1.0, và nó quyết định độ full mà hash set có thể, trước khi nó được resize. Đặc biệt, khi số phần tử là lớn hơn dung lượng của hash set nhiều lần bởi fill ratio của nó, hash set này được mở rộng.
+
+- Phương thức và Miêu tả
+
++ boolean add(Object o)
+Thêm phần tử đã cho tới Set này nếu nó đã không có mặt
+
++ void clear()
+Gỡ bỏ tất cả phần tử từ Set này
+
++ Object clone()
+Trả về một shallow copy của HashSet này: các đối tượng này chính chúng không bị mô phỏng
+
++ boolean contains(Object o)
+Trả về true nếu Set này chứa phần tử đã cho
+
++ boolean isEmpty()
+Trả về true nếu Set này không chứa phần tử nào
+
++ Iterator iterator()
+Trả về một iterator qua các phần tử trong Set này
+
++ boolean remove(Object o)
+Gỡ bỏ phần tử đã cho từ Set này nếu nó có mặt
+
++ int size()
+Trả về số phần tử trong Set này
+
+- Ví dụ
+
+public class HashSetDemo {
+
+   public static void main(String args[]) {
+      // tao mot hash set
+      HashSet hs = new HashSet();
+      // them cac phan tu toi hash set
+      hs.add("B");
+      hs.add("A");
+      hs.add("D");
+      hs.add("E");
+      hs.add("C");
+      hs.add("F");
+      hs.add("F");
+      //them gia tri F 2 lan nhung ket qua chi xuat hien 1 lan
+      System.out.println(hs);
+   }
+}

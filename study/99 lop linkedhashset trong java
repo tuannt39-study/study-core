@@ -1,0 +1,45 @@
+- Lớp LinkedHashSet trong Java
+
+- Lớp LinkedHashSet trong Java
+
++ Lớp LinkedHashSet trong Java kế thừa HashSet.
+
++ Lớp LinkedHashSet duy trì một linked list của các entry trong Set, theo thứ tự chúng đã được chèn.
+Điều này cho phép tính lặp lại theo thứ tự chèn qua Set đó.
+
++ Đó là, khi tuần hoàn qua một LinkedHashSet bởi sử dụng một Iterator, các phần tử sẽ được trả về theo thứ tự như khi chúng đã được chèn.
+
++ Hash code sau đó được sử dụng như là index, tại đó dữ liệu mà được liên kết với key đã được lưu trữ.
+Phép biến đổi của key này vào trong hash code được thực hiện tự động.
+
++ Lớp LinkedHashSet hỗ trợ 4 constructor. Mẫu constructor đầu tiên xây dựng một hash set mặc định.
+LinkedHashSet( )
+
++ Mẫu Constructor thứ hai khởi tạo hash set bởi sử dụng các phần tử trong c.
+LinkedHashSet(Collection c)
+
++ Constructor tiếp theo khởi tạo dung lượng của hash set là capacity.
+
++ Dung lượng tăng tự động khi phần tử được thêm vào tới Hash đó.
+LinkedHashSet(int capacity)
+
++ Mẫu Constructor thứ tư khởi tạo cả dung lượng và fill ratio (cũng được gọi là dung lượng tải) của hash set từ các tham số của nó.
+LinkedHashSet(int capacity, float fillRatio)
+
+- Ví dụ:
+
+public class HashSetDemo {
+
+   public static void main(String args[]) {
+      // tao mot hash set
+      LinkedHashSet hs = new LinkedHashSet();
+      // them cac phan tu toi hash set
+      hs.add("B");
+      hs.add("A");
+      hs.add("D");
+      hs.add("E");
+      hs.add("C");
+      hs.add("F");
+      System.out.println(hs);
+   }
+}

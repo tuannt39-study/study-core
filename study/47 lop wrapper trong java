@@ -1,0 +1,18 @@
+- Lớp Wrapper trong Java
+
+- Lớp Wrapper trong Java
+
++ Lớp Wrapper trong Java cung cấp kỹ thuật để chuyển đổi kiểu gốc primitive thành đối tượng và từ đối tượng thành kiểu gốc.
+Từ J2SE 5.0, đặc điểm autoboxing và unboxing sẽ tự động chuyển đổi primitive thành object (là autoboxing) và từ object thành primitive (là unboxing).
+Một trong 8 lớp của java.lang package là lớp Wrapper trong Java.
+Bảng dưới đây liệt kê danh sách 8 lớp Wrapper:
+
+Kiểu gốc		Lớp Wrapper
+boolean		Boolean
+char		Character
+byte		Byte
+short		Short
+int			Integer
+long		Long
+float		Float
+double		Double
